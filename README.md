@@ -683,7 +683,7 @@ module.exports = {
 
 ### 👣 (Step 3) Install PM2 environment
 
-Start Next.js application with PM2 as a service (only works if you are using Node v18.17.0 or above.)
+Start Next.js application with PM2 as a service (only works if you are using Node v22.20.0 or above.)
 
 #### 3.1) Installing Node and NPM on hosting server **(Optional).**
 
@@ -692,7 +692,7 @@ Node14+ version will be installed here
 ```sh
 $ curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
 $ sudo yum install nodejs
-$ node --version  #v14.16.1
+$ node --version  #v22.20.0
 $ npm --version   #6.14.12
 ```
 
@@ -1063,7 +1063,7 @@ $ docker build -t fullstack-nextjs-app-template:v1 .
 > ❌ **If 401 Unauthorized error, first run:**
 >
 > ```sh
-> $ docker pull node:18.20.4-alpine3.20
+> $ docker pull node:22.20.0-bookworm-slim
 > ```
 > 
 
@@ -1249,7 +1249,7 @@ To package a Next.js app using Docker for ARM architecture, follow these steps:
 ...
 
 # A base image for the ARM architecture, such as the arm64 version of Node.js
-FROM node:18.20.4-alpine3.20 AS base
+FROM node:22.20.0-bookworm-slim AS base
 
 ...
 ```
@@ -1521,7 +1521,7 @@ $ npm cache verify
 
 - Next.js 13.0.0 to 16+
 - React 18 to 19
-- TypeScript 4.x.x + 
+- TypeScript 5.x.x + 
 - Express 4.x.x
 
 

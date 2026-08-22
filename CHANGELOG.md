@@ -1,5 +1,9 @@
 # Changelog
 
+#### = 1.4.9 (August 22, 2026) =
+
+* tweak: Upgrade to next 16.3+, TS to 5+, Nodejs 22+(including Dockerfile).
+
 
 #### = 1.4.8 (December 18, 2025) =
 

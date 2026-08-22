@@ -1,8 +1,8 @@
 
 # Use official Node mirrors.
 # https://hub.docker.com
-# first run `docker pull node:18.20.4-alpine3.20`
-FROM node:18.20.4-alpine3.20 AS base
+# first run `docker pull node:22.20.0-bookworm-slim`
+FROM node:22.20.0-bookworm-slim AS base
 
 
 # ==========================================
@@ -11,8 +11,6 @@ FROM node:18.20.4-alpine3.20 AS base
 # Install dependencies only when needed
 FROM base AS deps
 
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
 
 # if using `node:20.15.0`
 # RUN apt-get update && \
@@ -40,8 +38,8 @@ WORKDIR /fullstack-nextjs-app-template
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci --no-audit --no-fund; \
+  elif [ -f pnpm-lock.yaml ]; then npm install -g pnpm && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
